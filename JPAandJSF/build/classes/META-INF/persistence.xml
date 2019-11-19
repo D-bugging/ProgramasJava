@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="htt//xmlns.jcp.org/xml/ns/persistence
+		http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+	>
+	
+	<!-- 
+		xmlns="http://java.sun.com/xml/ns/persistence"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+			http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	 -->
+	
+	
+	
+	<persistence-unit name="persistencia">
+		<!-- provedor/implementacao do JPA -->
+		 <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> 
+		<!-- <provider>org.hibernate.jpa.HibernatePersistence</provider> -->
+		<!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+		
+		
+		<!-- entidade mapeada -->
+		<class>entity.Automovel</class>
+		<properties>
+			<!-- Propriedades para conexao com Banco
+				Driver, banco, user, passwd -->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/JsfJpa" />
+			<property name="javax.persistence.jdbc.user" value="conexao" />
+			<property name="javax.persistence.jdbc.password" value="whoami4443" />
+				
+			<!-- Escolha de dialeto do MySQL -->
+			<!-- <property name="hibernate.dialect"
+				value="org.hibernate.dialect.MySQLInnoDBDialect" /> -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
+			<!-- create-drop = tabelas sao criadas do proprio hibernate e excluidas somente no final da execucao do programa caso solicitado pelo desenvolvedor.
+				update = nada e excluido, apenas criado, ou seja, todos os dados sao mantidos. Util para aplicacoes que estao em producao, das quais nada pode ser apagado.
+				validate = nao cria e nem exclui nada, apenas verifica se as entidades estao de acordo com as tabelas e, caso nao esteja, uma excecao e lancada. -->
+			<property name="hibernate.hbm2ddl.auto"
+				value="update" />
+			
+				
+			<!-- Imprime comandos SQL que estao sendo executados no banco de dados -->
+			<property name="hibernate.show_sql" value="true" />
+			<!-- Formata saida -->				
+			<property name="hibernate.format_sql" value="true" />
+		</properties>
+	</persistence-unit>
+	
+</persistence>
